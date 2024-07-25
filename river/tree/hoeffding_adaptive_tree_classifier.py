@@ -135,7 +135,7 @@ class HoeffdingAdaptiveTreeClassifier(HoeffdingTreeClassifier):
     def __init__(
         self,
         grace_period: int = 200,
-        max_depth: int | None = None,
+        max_depth: int | None = 985,
         split_criterion: str = "info_gain",
         delta: float = 1e-7,
         tau: float = 0.05,

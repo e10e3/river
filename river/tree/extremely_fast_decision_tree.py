@@ -132,7 +132,7 @@ class ExtremelyFastDecisionTreeClassifier(HoeffdingTreeClassifier):
     def __init__(
         self,
         grace_period: int = 200,
-        max_depth: int | None = None,
+        max_depth: int | None = 985,
         min_samples_reevaluate: int = 20,
         split_criterion: str = "info_gain",
         delta: float = 1e-7,

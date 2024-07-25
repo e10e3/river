@@ -48,7 +48,7 @@ class HoeffdingTree(ABC):
 
     def __init__(
         self,
-        max_depth: int | None = None,
+        max_depth: int | None = 985,  # Prevent a recursion error, see below
         binary_split: bool = False,
         max_size: float = 100.0,
         memory_estimate_period: int = 1000000,
@@ -60,6 +60,10 @@ class HoeffdingTree(ABC):
         self._split_criterion: str = ""
         self._leaf_prediction: str = ""
 
+        # The default maximum depth is set to 985 to prevent a recursion error.
+        # CPython raises an excetion after 1000-deep recursive calls to prevent
+        # stack overflows. Setting our limit to 15 below gives some room to
+        # manoeuvre.
         self.max_depth: float = max_depth if max_depth is not None else math.inf
         self.binary_split: bool = binary_split
         self._max_size: float = max_size

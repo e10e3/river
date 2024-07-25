@@ -111,7 +111,7 @@ class HoeffdingTreeRegressor(HoeffdingTree, base.Regressor):
     def __init__(
         self,
         grace_period: int = 200,
-        max_depth: int | None = None,
+        max_depth: int | None = 985,
         delta: float = 1e-7,
         tau: float = 0.05,
         leaf_prediction: str = "adaptive",
