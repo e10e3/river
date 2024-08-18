@@ -51,6 +51,8 @@ rich = "^13.6.0"
 jupyter = "^1.0.0"
 mike = "^2.0.0"
 polars = "^0.20.8"
+codespell = "^2.3.0"
+tomli = {version = "^2.0.1", python = "<=3.11"}
 
 [tool.poetry.group.compat]
 optional = true
@@ -144,3 +146,7 @@ module = [
     "requests.*"
 ]
 ignore_missing_imports = true
+
+[tool.codespell]
+skip = "*.c,*.cpp"
+uri-ignore-words-list = "*"
