@@ -150,3 +150,4 @@ ignore_missing_imports = true
 [tool.codespell]
 skip = "*.c,*.cpp"
 uri-ignore-words-list = "*"
+ignore-words-list = "MAPE, mape, Teh, Mannor, ONS, ntegrated"
