@@ -24,3 +24,8 @@ repos:
         language: python
         types: [python]
         entry: mypy --implicit-optional
+
+      - id: codespell
+        name: codespell
+        language: python
+        entry: codespell
