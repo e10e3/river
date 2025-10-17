@@ -33,6 +33,7 @@ def iter_vaex(
         y = _ensure_list(y)
         feature_names = [feat for feat in feature_names if feat not in y]
 
+    assert y is not None  # The case where y is None is not handled, but it should be.
     multioutput = len(y) > 1
 
     if multioutput:
