@@ -233,8 +233,7 @@ class River2SKLClassifier(River2SKLBase, sklearn_base.ClassifierMixin):
             import warnings
 
             warnings.warn(
-                f"more than 2 classes were given but {self.river_estimator} is a"
-                " binary classifier"
+                f"more than 2 classes were given but {self.river_estimator} is a binary classifier"
             )
 
         # Store the number of features so that future inputs can be checked
