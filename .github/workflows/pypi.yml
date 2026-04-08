@@ -15,20 +15,20 @@ jobs:
         linux_tag: ["manylinux", "musllinux"]
         python-version: ["311", "312", "313", "314", "315"]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
       - name: Install uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3.7.0
         with:
           platforms: all
       - name: Build wheels
-        uses: pypa/cibuildwheel@v4.2.0
+        uses: pypa/cibuildwheel@1828c10ab37f080699c7b81cea34097c684a7074 # v4.2.0
         timeout-minutes: 720
         env:
           CIBW_BUILD: "cp${{ matrix.python-version }}-${{ matrix.linux_tag }}_*"
           CIBW_ARCHS_LINUX: "x86_64 aarch64 ppc64le"
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
         with:
           name: cibw-wheels-${{ matrix.linux_tag }}-${{ matrix.python-version }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
@@ -41,9 +41,9 @@ jobs:
         os: [macos-15]
         python-version: ["311", "312", "313", "314", "315"]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
       - name: Install uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
       - name: Install Rust
         run: |
           curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain=none --profile=minimal -y
@@ -52,7 +52,7 @@ jobs:
           CARGO_HOME: ${{ runner.temp }}/river-cargo
           RUSTUP_HOME: ${{ runner.temp }}/river-rustup
       - name: Build wheels
-        uses: pypa/cibuildwheel@v4.2.0
+        uses: pypa/cibuildwheel@1828c10ab37f080699c7b81cea34097c684a7074 # v4.2.0
         timeout-minutes: 720
         env:
           CARGO_HOME: ${{ runner.temp }}/river-cargo
@@ -60,7 +60,7 @@ jobs:
           CIBW_ARCHS_MACOS: "universal2"
           CIBW_ENVIRONMENT_MACOS: 'PATH="$CARGO_HOME/bin:$PATH" MACOSX_DEPLOYMENT_TARGET="10.13"'
           RUSTUP_HOME: ${{ runner.temp }}/river-rustup
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
         with:
           name: cibw-wheels-${{ matrix.os }}-${{ matrix.python-version }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
@@ -73,17 +73,17 @@ jobs:
         os: [windows-2025]
         python-version: ["311", "312", "313", "314", "315"]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
       - name: Install uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
       - name: Build wheels
-        uses: pypa/cibuildwheel@v4.2.0
+        uses: pypa/cibuildwheel@1828c10ab37f080699c7b81cea34097c684a7074 # v4.2.0
         timeout-minutes: 720
         env:
           CIBW_BUILD: "cp${{ matrix.python-version }}-*"
           CIBW_ARCHS_WINDOWS: "AMD64"
           CIBW_ENVIRONMENT_WINDOWS: 'PATH="$UserProfile\.cargo\bin;$PATH"'
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
         with:
           name: cibw-wheels-${{ matrix.os }}-${{ matrix.python-version }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
@@ -103,22 +103,22 @@ jobs:
     env:
       MATURIN_PEP517_ARGS: "--features abi3"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
       - name: Install uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3.7.0
         with:
           platforms: all
       - name: Build wheels
-        uses: pypa/cibuildwheel@v4.2.0
+        uses: pypa/cibuildwheel@1828c10ab37f080699c7b81cea34097c684a7074 # v4.2.0
         timeout-minutes: 720
         env:
           CIBW_BUILD: "cp311-${{ matrix.linux_tag }}_*"
           CIBW_ARCHS_LINUX: "x86_64 aarch64 ppc64le"
           # The build runs inside a container, so forward the host env var in.
           CIBW_ENVIRONMENT_PASS_LINUX: MATURIN_PEP517_ARGS
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
         with:
           name: cibw-wheels-abi3-${{ matrix.linux_tag }}
           path: ./wheelhouse/*.whl
@@ -129,9 +129,9 @@ jobs:
     env:
       MATURIN_PEP517_ARGS: "--features abi3"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
       - name: Install uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
       - name: Install Rust
         run: |
           curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain=none --profile=minimal -y
@@ -140,7 +140,7 @@ jobs:
           CARGO_HOME: ${{ runner.temp }}/river-cargo
           RUSTUP_HOME: ${{ runner.temp }}/river-rustup
       - name: Build wheels
-        uses: pypa/cibuildwheel@v4.2.0
+        uses: pypa/cibuildwheel@1828c10ab37f080699c7b81cea34097c684a7074 # v4.2.0
         timeout-minutes: 720
         env:
           CARGO_HOME: ${{ runner.temp }}/river-cargo
@@ -148,7 +148,7 @@ jobs:
           CIBW_ARCHS_MACOS: "universal2"
           CIBW_ENVIRONMENT_MACOS: 'PATH="$CARGO_HOME/bin:$PATH" MACOSX_DEPLOYMENT_TARGET="10.13"'
           RUSTUP_HOME: ${{ runner.temp }}/river-rustup
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
         with:
           name: cibw-wheels-abi3-macos
           path: ./wheelhouse/*.whl
@@ -159,17 +159,17 @@ jobs:
     env:
       MATURIN_PEP517_ARGS: "--features abi3"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
       - name: Install uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
       - name: Build wheels
-        uses: pypa/cibuildwheel@v4.2.0
+        uses: pypa/cibuildwheel@1828c10ab37f080699c7b81cea34097c684a7074 # v4.2.0
         timeout-minutes: 720
         env:
           CIBW_BUILD: "cp311-*"
           CIBW_ARCHS_WINDOWS: "AMD64"
           CIBW_ENVIRONMENT_WINDOWS: 'PATH="$UserProfile\.cargo\bin;$PATH"'
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
         with:
           name: cibw-wheels-abi3-windows
           path: ./wheelhouse/*.whl
@@ -178,17 +178,17 @@ jobs:
     name: Build source distribution
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
         with:
           python-version: "3.13"
 
       - name: Build dist
         run: uv build --sdist
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
         with:
           name: cibw-sdist
           path: dist/*.tar.gz
@@ -218,15 +218,15 @@ jobs:
             cargo_build_std: ""
             cibw_enable: "pyodide-prerelease"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
       - name: Install uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
       - name: Install Rust ${{ matrix.rust_toolchain }} with the Emscripten target
         run: |
           rustup toolchain install "${{ matrix.rust_toolchain }}" \
             --profile minimal --target wasm32-unknown-emscripten ${{ matrix.rust_component }}
       - name: Build wheels
-        uses: pypa/cibuildwheel@v4.2.0
+        uses: pypa/cibuildwheel@1828c10ab37f080699c7b81cea34097c684a7074 # v4.2.0
         timeout-minutes: 720
         env:
           CIBW_PLATFORM: pyodide
@@ -237,7 +237,7 @@ jobs:
           # stable (3.14) toolchain, so the same env block works for both.
           RUSTUP_TOOLCHAIN: ${{ matrix.rust_toolchain }}
           CARGO_UNSTABLE_BUILD_STD: ${{ matrix.cargo_build_std }}
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
         with:
           name: cibw-wheels-pyodide-${{ matrix.python-version }}
           path: ./wheelhouse/*.whl
@@ -249,10 +249,10 @@ jobs:
     permissions:
       id-token: write
     steps:
-    - uses: actions/download-artifact@v5
+    - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
       with:
         pattern: cibw-*
         path: dist
         merge-multiple: true
 
-    - uses: pypa/gh-action-pypi-publish@release/v1
+    - uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b # v1.14.0

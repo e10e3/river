@@ -12,4 +12,4 @@ jobs:
 
     steps:
       - name: Clear caches
-        uses: easimon/wipe-cache@main
+        uses: easimon/wipe-cache@5f305e3ee1b681c44328cdf11eaedf943b60edff # Commit #11 in main, from 6 may 2024
