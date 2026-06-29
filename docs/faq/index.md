@@ -56,6 +56,8 @@ We also encourage you to try out [dill](https://dill.readthedocs.io/en/latest/di
 
 There are many great open-source libraries for building neural network models. We don't feel that we can bring anything of value to the existing Python ecosystem. However, we are open to implementing compatibility wrappers for popular libraries such as PyTorch and Keras.
 
+See [deep-river](https://github.com/online-ml/deep-river).
+
 ## Who are the authors of this library?
 
 We are research engineers, graduate students, PhDs and machine learning researchers. The members of the development team are mainly located in France, Brazil and New Zealand.
