@@ -17,7 +17,7 @@ def poisson(rate: float, rng: random.Random | Any = random) -> int:
 
     References
     ----------
-    [^1] [Wikipedia article](https://en.wikipedia.org/wiki/Poisson_distribution#/Generating_Poisson-distributed_random_variables)
+    [^1] [Wikipedia article](https://en.wikipedia.org/wiki/Poisson_distribution#Random_variate_generation)
 
     """
 
