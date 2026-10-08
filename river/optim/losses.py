@@ -385,7 +385,7 @@ class Log(BinaryLoss):
 
     References
     ----------
-    [^1]: [Logit Wikipedia page](https://en.wikipedia.org/wiki/Logit>)
+    [^1]: [Logit Wikipedia page](https://en.wikipedia.org/wiki/Logit)
 
     """
 
