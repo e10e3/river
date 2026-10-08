@@ -525,7 +525,7 @@ class Huber(RegressionLoss):
 
     References
     ----------
-    1. [Huber loss function - Wikipedia](https://en.wikipedia.org/wiki/Huber_Loss_Function)
+    1. [Huber loss function - Wikipedia](https://en.wikipedia.org/wiki/Huber_loss)
 
     """
 
