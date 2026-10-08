@@ -132,7 +132,7 @@ class BayesianMean(stats.base.Univariate):
     ----------
     [^1]: [Additive smoothing](https://en.wikipedia.org/wiki/Additive_smoothing)
     [^2]: [Bayesian average](https://en.wikipedia.org/wiki/Bayesian_average)
-    [^3]: [Practical example of Bayes estimators](https://en.wikipedia.org/wiki/Bayes_estimator#/Practical_example_of_Bayes_estimators)
+    [^3]: [Practical example of Bayes estimators](https://en.wikipedia.org/wiki/Bayes_estimator#Practical_example_of_Bayes_estimators)
 
     """
 
