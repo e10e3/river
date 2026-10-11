@@ -36,7 +36,7 @@ class MCC(metrics.base.BinaryMetric):
 
     References
     ----------
-    [^1]: [Wikipedia article](https://en.wikipedia.org/wiki/Matthews_correlation_coefficient)
+    [^1]: [Wikipedia article](https://en.wikipedia.org/wiki/Phi_coefficient)
 
     """
 
